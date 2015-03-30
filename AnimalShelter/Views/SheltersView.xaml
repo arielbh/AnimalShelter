@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <ItemsControl ItemsSource="{Binding Shelters}">
+        <ItemsControl ItemsSource="{Binding Shelters}" x:Name="List">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1">
@@ -14,6 +14,9 @@
                             <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
                             <TextBlock Text="{Binding Address, StringFormat=Address: {0}}" />
                             <ItemsControl ItemsSource="{Binding Dogs}" DisplayMemberPath="Name"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Who needs to Feed?" Command="{Binding DataContext.FeedCommand,ElementName=List}" CommandParameter="{Binding}"/>
+                            </StackPanel>
                         </StackPanel>
                     </Border>
                 </DataTemplate>

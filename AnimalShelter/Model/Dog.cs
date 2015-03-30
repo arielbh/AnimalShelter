@@ -25,6 +25,8 @@ namespace AnimalShelter.Model
         public double HumanAge {
             get { return Age*70; }}
 
+        public bool ShouldBeFeed { get; set; }
+
         
     }
 }

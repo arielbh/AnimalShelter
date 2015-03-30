@@ -22,7 +22,7 @@ namespace AnimalShelter.Services
                     Gender = "Male",
                     Id = "1234",
                     Weight = 29.3,
-                    ShelterId = 1
+                    ShelterId = 1,
                 },
                 new Dog
                 {
