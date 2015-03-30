@@ -22,6 +22,9 @@ namespace AnimalShelter.Model
             return Id + "-" + Gender + "-" + Breed + "-" + Name;
         }
 
+        public double HumanAge {
+            get { return Age*70; }}
+
         
     }
 }
