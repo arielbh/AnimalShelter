@@ -1,0 +1,14 @@
+﻿<mah:MetroWindow  x:Class="AnimalShelter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        BorderBrush="DeepSkyBlue" BorderThickness="1"
+        Title="MainWindow" Height="350" Width="525">
+    <TabControl ItemsSource="{Binding Parts}" SelectedIndex="0" SelectedItem="{Binding SelectedPart}">
+        <TabControl.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Header}"/>
+            </DataTemplate>
+        </TabControl.ItemTemplate>
+    </TabControl>
+</mah:MetroWindow>
