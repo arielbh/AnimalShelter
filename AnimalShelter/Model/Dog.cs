@@ -11,22 +11,24 @@ namespace AnimalShelter.Model
         public string Name { get; set; }
         public double Age { get; set; }
         public double Weight { get; set; }
-        public string Id { get; set; }
-        public string Gender { get; set; }
+        public int Id { get; set; }
+        public Gender Gender { get; set; }
         public string Breed { get; set; }
 
         public int ShelterId { get; set; }
 
-        public string GetDogIdentifierMethod()
+        //TODO: BUG 2: Invalid DogIdentifier
+        public string DogIdentifier
         {
-            return Id + "-" + Gender + "-" + Breed + "-" + Name;
+            get { return Id + '-' + Gender + '-' + Breed + '-' + Name; }
         }
 
-        public double HumanAge {
-            get { return Age*70; }}
+        //TODO: BUG 1: Human Age Calc
+        public double HumanAge 
+        {
+            get { return AgeConverter.ConvertDogYearsToHuman(Age); }
+        }
 
-        public bool ShouldBeFeed { get; set; }
-
-        
+        public bool ShouldBeFed { get; set; }
     }
 }

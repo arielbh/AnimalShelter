@@ -19,8 +19,8 @@ namespace AnimalShelter.Services
                     Age = 0.5,
                     Name = "Rex",
                     Breed = "German Shepherd",
-                    Gender = "Male",
-                    Id = "1234",
+                    Gender = Gender.Male,
+                    Id = 1234,
                     Weight = 29.3,
                     ShelterId = 1,
                 },
@@ -29,8 +29,8 @@ namespace AnimalShelter.Services
                     Age = 5.5,
                     Name = "Lady",
                     Breed = "Labrador",
-                    Gender = "Female",
-                    Id = "333",
+                    Gender = Gender.Female,
+                    Id = 333,
                     Weight = 23.5,
                     ShelterId = 2
 
@@ -40,8 +40,8 @@ namespace AnimalShelter.Services
                     Age = 2,
                     Name = "Winston",
                     Breed = "Bulldog",
-                    Gender = "Male",
-                    Id = "555",
+                    Gender = Gender.Male,
+                    Id = 555,
                     Weight = 8.2,
                     ShelterId = 1
 

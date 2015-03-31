@@ -45,21 +45,21 @@ namespace AnimalShelter.ViewModels
         {
             get
             {
-                return _feedCommand ?? (_feedCommand = new DelegateCommand<Shelter>(
-                    p =>
-                    {
-                        var message = "No Animals are needed to feed.";
-                        var names = string.Join(",", p.Dogs.Where(d => d.ShouldBeFeed).Select(d => d.Name));
-                        if (!string.IsNullOrEmpty(names))
-                        {
-                            message = "Those aniamals are needed to be feed: " + names;
-                        }
-                        MessageBox.Show(message);
-                    }));
+                return _feedCommand ?? (_feedCommand = new DelegateCommand<Shelter>(DisplayDogsToFeed));
             }
         }
 
-
+        private static void DisplayDogsToFeed(Shelter p)
+        {    
+            //TODO: BUG 3: Dogs not being fed!
+            var message = "No Animals are needed to feed.";
+            var names = string.Join(",", p.Dogs.Where(d => d.ShouldBeFed).Select(d => d.Name));
+            if (!string.IsNullOrEmpty(names))
+            {
+                message = "Those aniamals are needed to be feed: " + names;
+            }
+            MessageBox.Show(message);
+        }
 
 
         [Dependency]
