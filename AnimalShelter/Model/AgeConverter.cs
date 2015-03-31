@@ -1,11 +1,12 @@
-﻿namespace AnimalShelter.Model
+﻿using System;
+namespace AnimalShelter.Model
 {
     public static class AgeConverter
 
     {
-        public static double ConvertDogYearsToHuman(double age)
+        public static double CalcAgeInDogYears(DateTime birthday)
         {
-            return age*70;
+            return ((int)(DateTime.Now - birthday).TotalDays % 365) * 7;
         }
     }
 }

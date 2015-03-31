@@ -29,7 +29,7 @@ namespace AnimalShelter.Model
         //TODO: BUG 1: Human Age Calc
         public double HumanAge 
         {
-            get { return AgeConverter.ConvertDogYearsToHuman(Age); }
+            get { return AgeConverter.CalcAgeInDogYears(BirthDay); }
         }
 
         public bool ShouldBeFed { get; set; }
@@ -59,5 +59,7 @@ namespace AnimalShelter.Model
             get { return _foodRation; }
             set { _foodRation = value; }
         }
+
+        public DateTime BirthDay { get { return DateTime.Now - TimeSpan.FromDays(365*Age); } }
     }
 }
