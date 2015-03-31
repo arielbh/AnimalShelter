@@ -15,12 +15,15 @@ namespace AnimalShelter.Model
         public string Gender { get; set; }
         public string Breed { get; set; }
 
+        public string Size { get; set; }
+
         public int ShelterId { get; set; }
 
         public string GetDogIdentifierMethod()
         {
             return Id + "-" + Gender + "-" + Breed + "-" + Name;
         }
+
 
         public double HumanAge {
             get { return Age*70; }}
