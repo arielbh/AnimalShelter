@@ -48,5 +48,7 @@ namespace AnimalShelter.Model
                 }
             }
         }
+
+        public Uri ImageUri { get { return new Uri("pack://application:,,,/AnimalShelter;component/Assets/" + Id + ".jpg"); } }
     }
 }

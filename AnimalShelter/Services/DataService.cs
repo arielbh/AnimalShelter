@@ -18,9 +18,9 @@ namespace AnimalShelter.Services
                 {
                     Age = 0.5,
                     Name = "Rex",
-                    Breed = "German Shepherd",
+                    Breed = "Pug",
                     Gender = Gender.Male,
-                    Id = 1234,
+                    Id = 0,
                     Weight = 29.3,
                     ShelterId = 1,
                     Size = "XL"
@@ -31,7 +31,7 @@ namespace AnimalShelter.Services
                     Name = "Lady",
                     Breed = "Labrador",
                     Gender = Gender.Female,
-                    Id = 333,
+                    Id = 1,
                     Weight = 23.5,
                     ShelterId = 2,
                     Size = "L"
@@ -43,11 +43,102 @@ namespace AnimalShelter.Services
                     Name = "Winston",
                     Breed = "Bulldog",
                     Gender = Gender.Male,
-                    Id = 555,
+                    Id = 2,
                     Weight = 8.2,
                     ShelterId = 1,
                     Size = "M"
                 },
+                new Dog
+                {
+                    Age = 7,
+                    Name = "Magic",
+                    Breed = "Terrier",
+                    Gender = Gender.Male,
+                    Id = 3,
+                    Weight = 4,
+                    ShelterId = 1,
+                    Size = "M"
+                },
+                new Dog
+                {
+                    Age = 8,
+                    Name = "Mrs.Cool",
+                    Breed = "The Hound",
+                    Gender = Gender.Female,
+                    Id = 4,
+                    Weight = 24,
+                    ShelterId = 2,
+                    Size = "XL"
+
+                },
+                new Dog
+                {
+                    Age = 4,
+                    Name = "Churchill",
+                    Breed = "Bulldog",
+                    Gender = Gender.Male,
+                    Id = 5,
+                    Weight = 15.3,
+                    ShelterId = 1,
+                    Size = "L"
+                },
+                new Dog
+                {
+                    Age = 0.1,
+                    Name = "Matt",
+                    Breed = "Pincher",
+                    Gender = Gender.Male,
+                    Id = 6,
+                    Weight = 0.4,
+                    ShelterId = 1,
+                    Size = "M"
+                },
+                new Dog
+                {
+                    Age = 3,
+                    Name = "Tweety",
+                    Breed = "Basset",
+                    Gender = Gender.Female,
+                    Id = 7,
+                    Weight = 2.3,
+                    ShelterId = 2,
+                    Size = "M"
+
+                },
+                new Dog
+                {
+                    Age = 10,
+                    Name = "Biggy",
+                    Breed = "Danish",
+                    Gender = Gender.Male,
+                    Id = 9,
+                    Weight = 38.2,
+                    ShelterId = 1,
+                    Size = "L"
+                },
+                new Dog
+                {
+                    Age = 9,
+                    Name = "Tale",
+                    Breed = "Mastiff",
+                    Gender = Gender.Male,
+                    Id = 10,
+                    Weight = 44.4,
+                    ShelterId = 1,
+                    Size = "XL"
+                },
+                new Dog
+                {
+                    Age = 1.5,
+                    Name = "Snow",
+                    Breed = "Terrier",
+                    Gender = Gender.Male,
+                    Id = 11,
+                    Weight = 18.2,
+                    ShelterId = 1,
+                    Size = "L"
+                },
+
             });
         }
 

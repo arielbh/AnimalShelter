@@ -36,6 +36,7 @@
             <TextBlock Text="{Binding SelectedDog.Breed, StringFormat=Race: {0}}" />
             <TextBlock Text="{Binding SelectedDog.Weight, StringFormat=Weight: {0}}" />
             <TextBlock Text="{Binding SelectedDog.HumanAge, StringFormat=Human Age: {0}}" />
+            <Image Source="{Binding SelectedDog.ImageUri}" Stretch="Uniform" Width="300" Height="300"/>
 
         </StackPanel>
             
