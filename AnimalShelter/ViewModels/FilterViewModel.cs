@@ -120,8 +120,9 @@ namespace AnimalShelter.ViewModels
 
         private static bool ShouldBeNutured(Dog dog)
         {
-            //TODO: BUG 5: Should be nutured always returns false. 
-            return (dog.AnimalKind == AnimalKind.Dog || dog.AnimalKind == AnimalKind.Cat);
+            //TODO: BUG 5: Should be nutured always returns false. At least one cat, Grumpy, 
+            //             needs to be nutured, but the system isn't reporting it.
+            return (dog.AnimalKind == AnimalKind.Dog || dog.AnimalKind == AnimalKind.Cat) && dog.Age > 0.5;
         }
 
         private DelegateCommand _clearCommand;

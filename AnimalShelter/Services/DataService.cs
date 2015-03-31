@@ -143,7 +143,7 @@ namespace AnimalShelter.Services
                 },
                 new Dog
                 {
-                    Age = 1.5,
+                    Age = 0,
                     Name = "Grumpy",
                     Breed = "Cat",
                     Gender = Gender.Male,
