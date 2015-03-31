@@ -112,14 +112,14 @@ namespace AnimalShelter.ViewModels
                 {
                     var space = shelter.Spaces.FirstOrDefault(s => s.Size == @group.Key);
                     //TODO: BUG: ArrangeSpaces: Checks for Available but without equal
-                    if (space.Available > @group.Where(d => d.ShelterId == 0).Count())
+                    if (space.AvailableUnits > @group.Where(d => d.ShelterId == 0).Count())
                     {
-                        space.Available -= @group.Count();
+                        space.AvailableUnits -= @group.Count();
                         AssignDogsToShelter(@group.Select(d => d), shelter);
                     }
                     else
                     {
-                        var toAssignDogs = @group.Where(d => d.ShelterId == 0).Take(space.Available);
+                        var toAssignDogs = @group.Where(d => d.ShelterId == 0).Take(space.AvailableUnits);
                         AssignDogsToShelter(toAssignDogs, shelter);
                     }
                 }
@@ -142,7 +142,7 @@ namespace AnimalShelter.ViewModels
                 shelter.Dogs.Clear();
                 foreach (var space in shelter.Spaces)
                 {
-                    space.Available = space.Units;
+                    space.AvailableUnits = space.TotalUnits;
                 }
             }
             foreach (var dog in dogs)

@@ -23,7 +23,8 @@ namespace AnimalShelter.Services
                     Id = 0,
                     Weight = 29.3,
                     ShelterId = 1,
-                    Size = "XL"
+                    Size = "XL",
+                    AnimalKind = AnimalKind.Dog
                 },
                 new Dog
                 {
@@ -34,7 +35,8 @@ namespace AnimalShelter.Services
                     Id = 1,
                     Weight = 23.5,
                     ShelterId = 2,
-                    Size = "L"
+                    Size = "L",
+                    AnimalKind = AnimalKind.Dog
 
                 },
                 new Dog
@@ -46,7 +48,8 @@ namespace AnimalShelter.Services
                     Id = 2,
                     Weight = 8.2,
                     ShelterId = 1,
-                    Size = "M"
+                    Size = "M",
+                    AnimalKind = AnimalKind.Dog
                 },
                 new Dog
                 {
@@ -164,9 +167,9 @@ namespace AnimalShelter.Services
                     Address = "1067 NE Columbia Blvd Portland, OR, United States",
                     Spaces = new[]
                     {
-                        new ShelterSpace { Size = "XL",Units = 1, Available = 0},
-                        new ShelterSpace { Size = "L", Units = 2, Available = 2},
-                        new ShelterSpace { Size = "M", Units = 1, Available = 0},
+                        new ShelterSpace { Size = "XL",TotalUnits = 1, AvailableUnits = 0},
+                        new ShelterSpace { Size = "L", TotalUnits = 2, AvailableUnits = 2},
+                        new ShelterSpace { Size = "M", TotalUnits = 1, AvailableUnits = 0},
                     },
                     Dogs = new ObservableCollection<Dog>(dogs.Where(d => d.ShelterId == 1))
                 },
@@ -177,9 +180,9 @@ namespace AnimalShelter.Services
                     Address = "9101 SE Stanley Ave Portland, OR, United States",
                     Spaces = new[]
                     {
-                        new ShelterSpace { Size = "XL",Units = 0, Available = 0},
-                        new ShelterSpace { Size = "L", Units = 3, Available = 2},
-                        new ShelterSpace { Size = "M", Units = 4, Available = 4},
+                        new ShelterSpace { Size = "XL",TotalUnits = 0, AvailableUnits = 0},
+                        new ShelterSpace { Size = "L", TotalUnits = 3, AvailableUnits = 2},
+                        new ShelterSpace { Size = "M", TotalUnits = 4, AvailableUnits = 4},
                     },
                     Dogs = new ObservableCollection<Dog>(dogs.Where(d => d.ShelterId == 2))
                 },

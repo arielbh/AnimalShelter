@@ -38,8 +38,8 @@ namespace AnimalShelter.Model
 
     class ShelterSpace
     {
-        public int Units { get; set; }
+        public int TotalUnits { get; set; }
         public string Size { get; set; }
-        public int Available { get; set; }
+        public int AvailableUnits { get; set; }
     }
 }

@@ -38,6 +38,21 @@ namespace AnimalShelter.ViewModels
             }
         }
 
+        public bool NeedsToBeNuturedIsChecked
+        {
+            get { return _needsToBeNuturedIsChecked; }
+            set
+            {
+                if (value != _needsToBeNuturedIsChecked)
+                {
+                    _needsToBeNuturedIsChecked = value;
+                    OnPropertyChanged(() => NeedsToBeNuturedIsChecked);
+                    FilterCommand.Refresh();
+                }
+                
+            }
+        }
+
         private bool _toAgeIsChecked;
 
         public bool ToAgeIsChecked
@@ -88,17 +103,29 @@ namespace AnimalShelter.ViewModels
                         {
                             list.Add(d => d.Age < ToAge);
                         }
+
+                        if (NeedsToBeNuturedIsChecked)
+                        {
+                            list.Add(ShouldBeNutured);
+                        }
                         Filter = list.ToArray();
                         OnFilter(false);
                     },
                     () =>
                     {
-                        return FromAgeIsChecked || ToAgeIsChecked;
+                        return FromAgeIsChecked || ToAgeIsChecked || NeedsToBeNuturedIsChecked;
                     }));
             }
         }
 
+        private static bool ShouldBeNutured(Dog dog)
+        {
+            //TODO: BUG 5: Should be nutured always returns false. 
+            return (dog.AnimalKind == AnimalKind.Dog || dog.AnimalKind == AnimalKind.Cat);
+        }
+
         private DelegateCommand _clearCommand;
+        private bool _needsToBeNuturedIsChecked;
 
         public DelegateCommand ClearCommand
         {

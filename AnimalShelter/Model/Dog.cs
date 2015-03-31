@@ -33,7 +33,7 @@ namespace AnimalShelter.Model
         }
 
         public bool ShouldBeFed { get; set; }
-
+        public AnimalKind AnimalKind { get; set; }
         private bool _isFavorite;
 
         public bool IsFavorite
