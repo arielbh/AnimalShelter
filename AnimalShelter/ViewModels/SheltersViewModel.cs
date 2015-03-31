@@ -29,6 +29,8 @@ namespace AnimalShelter.ViewModels
                 shelter.PropertyChanged += shelter_PropertyChanged;
             }
 
+
+
         }
 
         void shelter_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -115,7 +117,7 @@ namespace AnimalShelter.ViewModels
             var names = string.Join(",", p.Dogs.Where(d => d.ShouldBeFed).Select(d => d.Name));
             if (!string.IsNullOrEmpty(names))
             {
-                message = "Those animals are needed to be feed: " + names;
+                message = "These animals need to be fed: " + names;
             }
             MessageBox.Show(message);
         }

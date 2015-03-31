@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -25,9 +26,31 @@ namespace AnimalShelter.ViewModels
             foreach (var dog in dogs)
             {
                 dog.IsFavorite = FavoritesManager.FavoriteDogs.Any(d => d.Id == dog.Id);
+                // TODO: BUG 6: Snow the dog needs to be vaccinated, by the system thinks otherwise!
+                dog.HasUpToDateVaccine = (dog.Age - dog.AgeAtLastVaccine) > GetMaximumYearsBetweenShots(dog.Breed);
                 dog.PropertyChanged += dog_PropertyChanged;
             }
             Dogs = CollectionViewSource.GetDefaultView(dogs);
+        }
+
+        private double GetMaximumYearsBetweenShots(string breed)
+        {
+            switch (breed)
+            {
+                case "Pug":
+                case "Labrador":
+                case "Bulldog":
+                    return 0.5;
+                case "Pincher":
+                case "Basset":
+                case "Danish":
+                    return 1;
+                case "Mastiff":
+                case "The Hound":
+                    return 2;
+                default:
+                    return 0;
+            }
         }
 
         void dog_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -62,6 +85,7 @@ namespace AnimalShelter.ViewModels
             }
         }
 
+          
 
         private ICollectionView _dogs;
         private FilterViewModel _filterViewModel;

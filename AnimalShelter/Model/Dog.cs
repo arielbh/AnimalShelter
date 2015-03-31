@@ -51,6 +51,8 @@ namespace AnimalShelter.Model
         }
 
         public Uri ImageUri { get { return new Uri("pack://application:,,,/AnimalShelter;component/Assets/" + Id + ".jpg"); } }
+        public bool HasUpToDateVaccine { get; set; }
+        public double AgeAtLastVaccine { get; set; }
 
         public int FoodRation
         {

@@ -17,6 +17,7 @@ namespace AnimalShelter.Services
                 new Dog
                 {
                     Age = 0.5,
+                    AgeAtLastVaccine = 0.4,
                     Name = "Rex",
                     Breed = "Pug",
                     Gender = Gender.Male,
@@ -29,6 +30,7 @@ namespace AnimalShelter.Services
                 new Dog
                 {
                     Age = 5.5,
+                    AgeAtLastVaccine = 3,
                     Name = "Lady",
                     Breed = "Labrador",
                     Gender = Gender.Female,
@@ -42,6 +44,7 @@ namespace AnimalShelter.Services
                 new Dog
                 {
                     Age = 2,
+                    AgeAtLastVaccine = 2,
                     Name = "Winston",
                     Breed = "Bulldog",
                     Gender = Gender.Male,
@@ -54,6 +57,7 @@ namespace AnimalShelter.Services
                 new Dog
                 {
                     Age = 7,
+                    AgeAtLastVaccine = 6.5,
                     Name = "Magic",
                     Breed = "Terrier",
                     Gender = Gender.Male,
@@ -65,6 +69,7 @@ namespace AnimalShelter.Services
                 new Dog
                 {
                     Age = 8,
+                    AgeAtLastVaccine = 7.7,
                     Name = "Mrs.Cool",
                     Breed = "The Hound",
                     Gender = Gender.Female,
@@ -77,6 +82,7 @@ namespace AnimalShelter.Services
                 new Dog
                 {
                     Age = 4,
+                    AgeAtLastVaccine = 2,
                     Name = "Churchill",
                     Breed = "Bulldog",
                     Gender = Gender.Male,
@@ -88,6 +94,7 @@ namespace AnimalShelter.Services
                 new Dog
                 {
                     Age = 0.1,
+                    AgeAtLastVaccine = 0.1,
                     Name = "Matt",
                     Breed = "Pincher",
                     Gender = Gender.Male,
@@ -99,6 +106,7 @@ namespace AnimalShelter.Services
                 new Dog
                 {
                     Age = 3,
+                    AgeAtLastVaccine = 1,
                     Name = "Tweety",
                     Breed = "Basset",
                     Gender = Gender.Female,
@@ -133,6 +141,7 @@ namespace AnimalShelter.Services
                 new Dog
                 {
                     Age = 1.5,
+                    AgeAtLastVaccine = 1.4,
                     Name = "Snow",
                     Breed = "Terrier",
                     Gender = Gender.Male,
