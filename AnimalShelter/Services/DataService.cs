@@ -138,6 +138,17 @@ namespace AnimalShelter.Services
                     ShelterId = 1,
                     Size = "L"
                 },
+                new Dog
+                {
+                    Age = 1.5,
+                    Name = "Grumpy",
+                    Breed = "Cat",
+                    Gender = Gender.Male,
+                    Id = 12,
+                    Weight = 3,
+                    ShelterId = 1,
+                    Size = "M"
+                },
 
             });
         }
