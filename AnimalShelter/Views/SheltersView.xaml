@@ -12,8 +12,11 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <Button Content="Arrange Spaces" Command="{Binding ArrangeSpacesCommand}"/>
+            <Button Content="Update Food Rations" Command="{Binding UpdateFoodRationsCommand}"/>
+
         </StackPanel>
-        <ItemsControl ItemsSource="{Binding Shelters}" x:Name="List" Grid.Row="1">
+        <ScrollViewer Grid.Row="1">
+         <ItemsControl ItemsSource="{Binding Shelters}" x:Name="List">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1">
@@ -26,7 +29,21 @@
 
                             </StackPanel>
                             <TextBlock Text="{Binding Address, StringFormat=Address: {0}}" />
-                            <ItemsControl ItemsSource="{Binding Dogs}" DisplayMemberPath="Name"/>
+                            <ItemsControl ItemsSource="{Binding Dogs}" >
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Source="{Binding ImageUri}" Width="100" Height="100" Stretch="Uniform"/>
+                                            <TextBlock Text="{Binding Name}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             <StackPanel Orientation="Horizontal">
                                 <Button Content="Who needs to Feed?" Command="{Binding DataContext.FeedCommand,ElementName=List}" CommandParameter="{Binding}"/>
                             </StackPanel>
@@ -35,6 +52,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-            
+        </ScrollViewer>
     </Grid>
 </UserControl>

@@ -32,7 +32,7 @@ namespace AnimalShelter.ViewModels
 
         void dog_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "IsFavorite")
+            if (e.PropertyName == "IsFavorite2")
             {
                 Dog dog = sender as Dog;
                 if (dog.IsFavorite)

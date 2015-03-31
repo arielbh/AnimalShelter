@@ -35,6 +35,7 @@ namespace AnimalShelter.Model
         public bool ShouldBeFed { get; set; }
         public AnimalKind AnimalKind { get; set; }
         private bool _isFavorite;
+        private int _foodRation;
 
         public bool IsFavorite
         {
@@ -50,5 +51,11 @@ namespace AnimalShelter.Model
         }
 
         public Uri ImageUri { get { return new Uri("pack://application:,,,/AnimalShelter;component/Assets/" + Id + ".jpg"); } }
+
+        public int FoodRation
+        {
+            get { return _foodRation; }
+            set { _foodRation = value; }
+        }
     }
 }

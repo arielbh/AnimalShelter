@@ -65,6 +65,39 @@ namespace AnimalShelter.ViewModels
             }
         }
 
+        private DelegateCommand _updateFoodRationsCommand;
+
+        public DelegateCommand UpdateFoodRationsCommand
+        {
+            get
+            {
+                return _updateFoodRationsCommand ?? (_updateFoodRationsCommand = new DelegateCommand(
+                    UpdateFoodRations));
+            }
+        }
+
+        private void UpdateFoodRations()
+        {
+            foreach (var shelter in Shelters)
+            {
+                foreach (var dog in shelter.Dogs)
+                {
+                    var ration = dog.Size.Select(c => (int) c).Sum();
+                    if (dog.Gender == Gender.Male)
+                    {
+                        dog.FoodRation = ration*3;
+
+                    }
+                    if (dog.Gender == Gender.Female)
+                    {
+                        //TODO: Bug: not using ration with female dogs
+                        dog.FoodRation =  (int) (dog.FoodRation / 1.5);
+                    }
+
+                }
+            }}
+
+
         private DelegateCommand<Shelter> _feedCommand;
 
         public DelegateCommand<Shelter> FeedCommand
