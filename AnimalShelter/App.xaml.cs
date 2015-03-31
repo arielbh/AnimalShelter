@@ -19,6 +19,9 @@ namespace AnimalShelter
         {
             Container = new UnityContainer();
             Container.RegisterType<IDataService, DataService>(new ContainerControlledLifetimeManager());
+            //TODO: Bug: FavoriteManager is not singletone.
+            Container.RegisterType<IFavoritesManager, FavoritesManager>();
+
         }
         public static IUnityContainer Container { get; set; }
 

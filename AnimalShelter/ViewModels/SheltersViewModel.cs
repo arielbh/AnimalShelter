@@ -22,7 +22,33 @@ namespace AnimalShelter.ViewModels
         {
             base.Activate();
             Shelters = await DataService.GetShelters(await DataService.GetDogs());
+            foreach (var shelter in Shelters)
+            {
+                shelter.IsFavorite = FavoritesManager.FavoriteShelters.Any(s => s.Id == shelter.Id);
+
+                shelter.PropertyChanged += shelter_PropertyChanged;
+            }
+
         }
+
+        void shelter_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsFavorite")
+            {
+                Shelter shelter = sender as Shelter;
+                if (shelter.IsFavorite)
+                {
+                    FavoritesManager.FavoriteShelters.Add(shelter);
+                }
+                else
+                {
+                    FavoritesManager.FavoriteShelters.Remove(shelter);
+                }
+                FavoritesManager.Save();
+            }
+        }
+
+
 
         private Shelter[] _shelters;
 
@@ -62,6 +88,7 @@ namespace AnimalShelter.ViewModels
         }
 
         private DelegateCommand _arrangeSpacesCommand;
+        private IFavoritesManager _favoritesManager;
 
         public DelegateCommand ArrangeSpacesCommand
         {
@@ -127,5 +154,15 @@ namespace AnimalShelter.ViewModels
 
         [Dependency]
         public IDataService DataService { get; set; }
+        [Dependency]
+        public IFavoritesManager FavoritesManager
+        {
+            get { return _favoritesManager; }
+            set
+            {
+                _favoritesManager = value;
+                _favoritesManager.Load();
+            }
+        }
     }
 }

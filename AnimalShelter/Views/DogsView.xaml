@@ -18,7 +18,12 @@
         <ListBox Grid.Row="1" ItemsSource="{Binding Dogs}" SelectedItem="{Binding SelectedDog}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton
+                    Padding="2"
+                    Template="{DynamicResource StarToggleButton}" IsChecked="{Binding IsFavorite}"/>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

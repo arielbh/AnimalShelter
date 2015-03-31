@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SuiteValue.UI.MVVM;
 
 namespace AnimalShelter.Model
 {
-    public class Dog
+    public class Dog : NotifyObject
     {
         public string Name { get; set; }
         public double Age { get; set; }
@@ -32,5 +33,20 @@ namespace AnimalShelter.Model
         }
 
         public bool ShouldBeFed { get; set; }
+
+        private bool _isFavorite;
+
+        public bool IsFavorite
+        {
+            get { return _isFavorite; }
+            set
+            {
+                if (value != _isFavorite)
+                {
+                    _isFavorite = value;
+                    OnPropertyChanged(() => IsFavorite);
+                }
+            }
+        }
     }
 }

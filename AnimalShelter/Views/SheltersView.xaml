@@ -18,7 +18,13 @@
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1">
                         <StackPanel>
-                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
+                            <StackPanel Orientation="Horizontal">
+                                <ToggleButton
+                    Padding="2"
+                    Template="{DynamicResource StarToggleButton}" IsChecked="{Binding IsFavorite}"/>
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
+
+                            </StackPanel>
                             <TextBlock Text="{Binding Address, StringFormat=Address: {0}}" />
                             <ItemsControl ItemsSource="{Binding Dogs}" DisplayMemberPath="Name"/>
                             <StackPanel Orientation="Horizontal">

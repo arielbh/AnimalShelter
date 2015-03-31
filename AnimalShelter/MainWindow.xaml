@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         BorderBrush="DeepSkyBlue" BorderThickness="1"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
     <TabControl ItemsSource="{Binding Parts}" SelectedIndex="0" SelectedItem="{Binding SelectedPart}">
         <TabControl.ItemTemplate>
             <DataTemplate>

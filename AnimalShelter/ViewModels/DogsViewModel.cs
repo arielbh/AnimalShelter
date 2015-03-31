@@ -22,7 +22,29 @@ namespace AnimalShelter.ViewModels
         {
             base.Activate();
             var dogs = await DataService.GetDogs();
+            foreach (var dog in dogs)
+            {
+                dog.IsFavorite = FavoritesManager.FavoriteDogs.Any(d => d.Id == dog.Id);
+                dog.PropertyChanged += dog_PropertyChanged;
+            }
             Dogs = CollectionViewSource.GetDefaultView(dogs);
+        }
+
+        void dog_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsFavorite")
+            {
+                Dog dog = sender as Dog;
+                if (dog.IsFavorite)
+                {
+                    FavoritesManager.FavoriteDogs.Add(dog);
+                }
+                else
+                {                                  
+                    FavoritesManager.FavoriteDogs.Remove(dog);
+                }
+                FavoritesManager.Save();
+            }
         }
 
         private Dog _selectedDog;
@@ -43,6 +65,7 @@ namespace AnimalShelter.ViewModels
 
         private ICollectionView _dogs;
         private FilterViewModel _filterViewModel;
+        private IFavoritesManager _favoritesManager;
 
         public ICollectionView Dogs
         {
@@ -59,6 +82,15 @@ namespace AnimalShelter.ViewModels
 
         [Dependency]
         public IDataService DataService { get; set; }
+
+        [Dependency]
+        public IFavoritesManager FavoritesManager
+        {
+            get { return _favoritesManager; }
+            set { _favoritesManager = value;
+                _favoritesManager.Load();
+            }
+        }
 
         [Dependency]
         public FilterViewModel FilterViewModel
