@@ -15,6 +15,8 @@ namespace AnimalShelter.Model
         public Gender Gender { get; set; }
         public string Breed { get; set; }
 
+        public string Size { get; set; }
+
         public int ShelterId { get; set; }
 
         //TODO: BUG 2: Invalid DogIdentifier
