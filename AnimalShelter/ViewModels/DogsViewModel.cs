@@ -33,20 +33,20 @@ namespace AnimalShelter.ViewModels
             Dogs = CollectionViewSource.GetDefaultView(dogs);
         }
 
-        private double GetMaximumYearsBetweenShots(string breed)
+        private double GetMaximumYearsBetweenShots(Breed breed)
         {
             switch (breed)
             {
-                case "Pug":
-                case "Labrador":
-                case "Bulldog":
+                case Breed.Pug:
+                case Breed.Labrador:
+                case Breed.Bulldog:
                     return 0.5;
-                case "Pincher":
-                case "Basset":
-                case "Danish":
+                case Breed.Pincher:
+                case Breed.Basset:
+                case Breed.Danish:
                     return 1;
-                case "Mastiff":
-                case "The Hound":
+                case Breed.Mastiff:
+                case Breed.TheHound:
                     return 2;
                 default:
                     return 0;

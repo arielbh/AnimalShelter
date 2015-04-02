@@ -14,7 +14,7 @@ namespace AnimalShelter.Model
         public double Weight { get; set; }
         public int Id { get; set; }
         public Gender Gender { get; set; }
-        public string Breed { get; set; }
+        public Breed Breed { get; set; }
 
         public string Size { get; set; }
 
@@ -23,7 +23,7 @@ namespace AnimalShelter.Model
         //TODO: BUG 2: Invalid DogIdentifier
         public string DogIdentifier
         {
-            get { return Id + '-' + Gender + '-' + Breed + '-' + Name; }
+            get { return Id + '-' + Gender + '-' + (int)Age + '-' + (Breed+ '-' + Name); }
         }
 
         //TODO: BUG 1: Human Age Calc

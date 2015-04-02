@@ -6,7 +6,7 @@ namespace AnimalShelter.Model
     {
         public static double CalcAgeInDogYears(DateTime birthday)
         {
-            return ((int)(DateTime.Now - birthday).TotalDays % 365) * 7;
+            return ((DateTime.Now - birthday).TotalDays % 365) * 7;
         }
     }
 }

@@ -33,7 +33,7 @@
             <TextBlock Text="{Binding SelectedDog.Id, StringFormat=Id: {0}}" />
             <TextBlock Text="{Binding SelectedDog.Age, StringFormat=Age: {0}}" />
             <TextBlock Text="{Binding SelectedDog.Gender, StringFormat=Gender: {0}}" />
-            <TextBlock Text="{Binding SelectedDog.Breed, StringFormat=Race: {0}}" />
+            <TextBlock Text="{Binding SelectedDog.Breed, StringFormat=Breed: {0}}" />
             <TextBlock Text="{Binding SelectedDog.Weight, StringFormat=Weight: {0}}" />
             <TextBlock Text="{Binding SelectedDog.HumanAge, StringFormat=Human Age: {0}}" />
             <TextBlock Text="{Binding SelectedDog.HasUpToDateVaccine, StringFormat=Has up-to-date vaccination: {0}}" />

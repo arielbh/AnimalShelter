@@ -76,6 +76,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\AgeConverter.cs" />
     <Compile Include="Model\AnimalKind.cs" />
+    <Compile Include="Model\Breed.cs" />
     <Compile Include="Model\Dog.cs" />
     <Compile Include="Model\Gender.cs" />
     <Compile Include="Model\Shelter.cs" />
