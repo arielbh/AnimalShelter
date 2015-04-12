@@ -140,8 +140,8 @@ namespace AnimalShelter.Services
                 },
                 new Dog
                 {
-                    Age = 1.5,
-                    AgeAtLastVaccine = 1.4,
+                    Age = 2,
+                    AgeAtLastVaccine = 1,
                     Name = "Snow",
                     Breed = Breed.Terrier,
                     Gender = Gender.Male,

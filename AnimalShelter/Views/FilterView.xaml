@@ -18,7 +18,7 @@
             <Slider Margin="5,0,0,0" IsEnabled="{Binding IsChecked, ElementName=ToAgeFilter}" Width="200" x:Name="ToAgeSlider" TickFrequency="0.1" Minimum="0" Maximum="15" IsSnapToTickEnabled="True" Value="{Binding ToAge}" />
             <TextBlock Text="{Binding Value, ElementName=ToAgeSlider }"/>
         </StackPanel>
-        <CheckBox  IsChecked="{Binding NeedsToBeNuturedIsChecked}" >Needs to be nutured</CheckBox>
+        <CheckBox  IsChecked="{Binding NeedsToBeWashedIsChecked}" >Needs to be washed</CheckBox>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="7*"/>

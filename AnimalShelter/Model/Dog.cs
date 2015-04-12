@@ -9,6 +9,24 @@ namespace AnimalShelter.Model
 {
     public class Dog : NotifyObject
     {
+        protected bool Equals(Dog other)
+        {
+            return Id == other.Id;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Dog) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return Id;
+        }
+
         public string Name { get; set; }
         public double Age { get; set; }
         public double Weight { get; set; }
@@ -21,15 +39,18 @@ namespace AnimalShelter.Model
         public int ShelterId { get; set; }
 
         //TODO: BUG 2: Invalid DogIdentifier
+        //STEPS: 1. Step over the return statement, figure out what the bug is, and fix it!
         public string DogIdentifier
         {
             get { return Id + '-' + Gender + '-' + (int)Age + '-' + (Breed+ '-' + Name); }
         }
 
         //TODO: BUG 1: Human Age Calc
+        //STEPS: 1. Step-Over the return value, click Simplify
+        //       2. Step into the ConvertDogYearsToHuman method, and do the same to try and figure out the issue.
         public double HumanAge 
         {
-            get { return AgeConverter.CalcAgeInDogYears(BirthDay); }
+            get { return AgeConverter.ConvertDogYearsToHuman(BirthDay); }
         }
 
         public bool ShouldBeFed { get; set; }

@@ -26,7 +26,7 @@ namespace AnimalShelter.ViewModels
             foreach (var dog in dogs)
             {
                 dog.IsFavorite = FavoritesManager.FavoriteDogs.Any(d => d.Id == dog.Id);
-                // TODO: BUG 6: Snow the dog needs to be vaccinated, by the system thinks otherwise!
+                // Snow the dog needs to be vaccinated, by the system thinks otherwise!
                 dog.HasUpToDateVaccine = (dog.Age - dog.AgeAtLastVaccine) > GetMaximumYearsBetweenShots(dog.Breed);
                 dog.PropertyChanged += dog_PropertyChanged;
             }
@@ -55,7 +55,7 @@ namespace AnimalShelter.ViewModels
 
         void dog_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "IsFavorite2")
+            if (e.PropertyName == "IsFavorite")
             {
                 Dog dog = sender as Dog;
                 if (dog.IsFavorite)

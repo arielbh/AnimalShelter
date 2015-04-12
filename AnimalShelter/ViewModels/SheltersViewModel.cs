@@ -24,27 +24,28 @@ namespace AnimalShelter.ViewModels
             Shelters = await DataService.GetShelters(await DataService.GetDogs());
             foreach (var shelter in Shelters)
             {
-                shelter.IsFavorite = FavoritesManager.FavoriteShelters.Any(s => s.Id == shelter.Id);
-
-                shelter.PropertyChanged += shelter_PropertyChanged;
+                foreach (var dog in shelter.Dogs)
+                {
+                    dog.IsFavorite = FavoritesManager.FavoriteDogs.Any(d => d.Id == dog.Id);
+                    dog.PropertyChanged += dog_PropertyChanged;
+                }
             }
 
-
-
+            UpdateFoodRations();
         }
 
-        void shelter_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void dog_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "IsFavorite")
             {
-                Shelter shelter = sender as Shelter;
-                if (shelter.IsFavorite)
+                Dog dog = sender as Dog;
+                if (dog != null && dog.IsFavorite)
                 {
-                    FavoritesManager.FavoriteShelters.Add(shelter);
+                    FavoritesManager.FavoriteDogs.Add(dog);
                 }
                 else
                 {
-                    FavoritesManager.FavoriteShelters.Remove(shelter);
+                    FavoritesManager.FavoriteDogs.Remove(dog);
                 }
                 FavoritesManager.Save();
             }
@@ -67,37 +68,37 @@ namespace AnimalShelter.ViewModels
             }
         }
 
-        private DelegateCommand _updateFoodRationsCommand;
+        private DelegateCommand _showFoodRationsCommand;
 
-        public DelegateCommand UpdateFoodRationsCommand
+        public DelegateCommand ShowFoodRationsCommand
         {
             get
             {
-                return _updateFoodRationsCommand ?? (_updateFoodRationsCommand = new DelegateCommand(
-                    UpdateFoodRations));
+                return _showFoodRationsCommand ?? (_showFoodRationsCommand = new DelegateCommand(ShowFoodRations));
             }
         }
 
-        private void UpdateFoodRations()
+        private void ShowFoodRations()
         {
+            UpdateFoodRations();
+            var builder = new StringBuilder();
             foreach (var shelter in Shelters)
             {
                 foreach (var dog in shelter.Dogs)
                 {
-                    var ration = dog.Size.Select(c => (int) c).Sum();
-                    if (dog.Gender == Gender.Male)
-                    {
-                        dog.FoodRation = ration*3;
+                    builder.AppendFormat("{0} should eat {1} grams of dog food today." + Environment.NewLine, 
+                                         dog.Name, dog.FoodRation);
 
-                    }
-                    if (dog.Gender == Gender.Female)
-                    {
-                        //TODO: Bug: not using ration with female dogs
-                        dog.FoodRation =  (int) (dog.FoodRation / 1.5);
-                    }
-
+                    //TODO: BUG 6: Some dogs get no food!
+                    //STEPS: 1. Put a breakpoint here and hit it by clicking the "Update Food Rations" button
+                    //       2. Hover over dog.FoodRation, open the Magic Wand, and choose "When Set... Break"
+                    //       3. Set a condition for "value == 0" so that you only break only the faulty value.
+                    //       4. Click the "Show Food Rations" button again
                 }
-            }}
+            }
+
+            MessageBox.Show(builder.ToString());
+        }
 
 
         private DelegateCommand<Shelter> _feedCommand;
@@ -112,8 +113,14 @@ namespace AnimalShelter.ViewModels
 
         private static void DisplayDogsToFeed(Shelter p)
         {    
+          
+            var message = "No Animals need to be fed.";
             //TODO: BUG 3: Dogs not being fed!
-            var message = "No Animals are needed to feed.";
+            //STEPS: 1. Step over the statement
+            //       2. Click the Simplify icon
+            //       3. Think about the different options - what could have caused 'names' return an empty string?
+            //       4. Hover over each expression box, then expand "Results View" to find out which part 
+            //          of the expression is causing problems! Was it the Select call's fault or the Where's?
             var names = string.Join(",", p.Dogs.Where(d => d.ShouldBeFed).Select(d => d.Name));
             if (!string.IsNullOrEmpty(names))
             {
@@ -123,6 +130,7 @@ namespace AnimalShelter.ViewModels
         }
 
         private DelegateCommand _arrangeSpacesCommand;
+
         private IFavoritesManager _favoritesManager;
 
         public DelegateCommand ArrangeSpacesCommand
@@ -146,7 +154,7 @@ namespace AnimalShelter.ViewModels
                 foreach (var shelter in Shelters)
                 {
                     var space = shelter.Spaces.FirstOrDefault(s => s.Size == @group.Key);
-                    //TODO: BUG: ArrangeSpaces: Checks for Available but without equal
+                    // BUG: ArrangeSpaces: Checks for Available but without equal
                     if (space.AvailableUnits > @group.Where(d => d.ShelterId == 0).Count())
                     {
                         space.AvailableUnits -= @group.Count();
@@ -189,6 +197,7 @@ namespace AnimalShelter.ViewModels
 
         [Dependency]
         public IDataService DataService { get; set; }
+
         [Dependency]
         public IFavoritesManager FavoritesManager
         {
@@ -199,5 +208,25 @@ namespace AnimalShelter.ViewModels
                 _favoritesManager.Load();
             }
         }
+
+        private void UpdateFoodRations()
+        {
+            foreach (var shelter in Shelters)
+            {
+                foreach (var dog in shelter.Dogs)
+                {
+                    var ration = dog.Size.Select(c => (int) c).Sum();
+                    if (dog.Gender == Gender.Male)
+                    {
+                        dog.FoodRation = ration*3;
+
+                    }
+                    if (dog.Gender == Gender.Female)
+                    {
+                        dog.FoodRation =  (int) (dog.FoodRation / 1.5);
+                    }
+
+                }
+            }}
     }
 }

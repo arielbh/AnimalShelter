@@ -14,7 +14,6 @@ namespace AnimalShelter.Services
         void Load();
         void Save();
         List<Dog> FavoriteDogs { get; set; }
-        List<Shelter> FavoriteShelters { get; set; }
     }
     [DataContract]
     class FavoritesManager : IFavoritesManager
@@ -22,7 +21,6 @@ namespace AnimalShelter.Services
         public FavoritesManager()
         {
             FavoriteDogs = new List<Dog>();
-            FavoriteShelters = new List<Shelter>();
         }
 
         public void Load()
@@ -33,7 +31,6 @@ namespace AnimalShelter.Services
                 if (stream.Length == 0) return;
                 var data = (FavoritesManager)serializer.ReadObject(stream);
                 this.FavoriteDogs = data.FavoriteDogs;
-                this.FavoriteShelters = data.FavoriteShelters;
             }  
         }
 
@@ -45,9 +42,8 @@ namespace AnimalShelter.Services
                 serializer.WriteObject(stream, this);
             }
         }
+
         [DataMember]
         public List<Dog> FavoriteDogs { get; set; }
-        [DataMember]
-        public List<Shelter> FavoriteShelters { get; set; }
-    }
+   }
 }

@@ -38,15 +38,15 @@ namespace AnimalShelter.ViewModels
             }
         }
 
-        public bool NeedsToBeNuturedIsChecked
+        public bool NeedsToBeWashedIsChecked
         {
-            get { return _needsToBeNuturedIsChecked; }
+            get { return _NeedsToBeWashedIsChecked; }
             set
             {
-                if (value != _needsToBeNuturedIsChecked)
+                if (value != _NeedsToBeWashedIsChecked)
                 {
-                    _needsToBeNuturedIsChecked = value;
-                    OnPropertyChanged(() => NeedsToBeNuturedIsChecked);
+                    _NeedsToBeWashedIsChecked = value;
+                    OnPropertyChanged(() => NeedsToBeWashedIsChecked);
                     FilterCommand.Refresh();
                 }
                 
@@ -104,29 +104,32 @@ namespace AnimalShelter.ViewModels
                             list.Add(d => d.Age < ToAge);
                         }
 
-                        if (NeedsToBeNuturedIsChecked)
+                        if (NeedsToBeWashedIsChecked)
                         {
-                            list.Add(ShouldBeNutured);
+                            list.Add(ShouldBeWashed);
                         }
                         Filter = list.ToArray();
                         OnFilter(false);
                     },
                     () =>
                     {
-                        return FromAgeIsChecked || ToAgeIsChecked || NeedsToBeNuturedIsChecked;
+                        return FromAgeIsChecked || ToAgeIsChecked || NeedsToBeWashedIsChecked;
                     }));
             }
         }
 
-        private static bool ShouldBeNutured(Dog dog)
+        private static bool ShouldBeWashed(Dog dog)
         {
-            //TODO: BUG 5: The filter for animals that need to be nutured is not working.
-            //             At least one cat, Grumpy, needs to be nutured, but the system isn't reporting it.
-            return (dog.AnimalKind == AnimalKind.Dog && dog.AnimalKind == AnimalKind.Cat) && dog.Age > 0.5;
+            //TODO: BUG 4: The filter for animals that need to be washed regularly is not working.
+            //               At least one cat, Grumpy, needs to be washed, but the system isn't reporting it.
+            //STEPS: 1. Notice that you are seeing a predicted result of what the expression will return
+            //       2. Use Edit & Continue to fix the bug in this line of code. You will get instant feedback!
+            //       3. Hover over dog.Age. Double click it and change the Age to a negative number. See what happens.
+            return (dog.AnimalKind == AnimalKind.Dog && dog.AnimalKind == AnimalKind.Cat) && dog.Age > 0.1;
         }
 
         private DelegateCommand _clearCommand;
-        private bool _needsToBeNuturedIsChecked;
+        private bool _NeedsToBeWashedIsChecked;
 
         public DelegateCommand ClearCommand
         {

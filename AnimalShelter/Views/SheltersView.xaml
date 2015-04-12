@@ -4,15 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Content="Arrange Spaces" Command="{Binding ArrangeSpacesCommand}"/>
-            <Button Content="Update Food Rations" Command="{Binding UpdateFoodRationsCommand}"/>
+            <Button Content="Show Food Rations" Command="{Binding ShowFoodRationsCommand}"/>
 
         </StackPanel>
         <ScrollViewer Grid.Row="1">
@@ -22,9 +21,6 @@
                     <Border BorderBrush="Black" BorderThickness="1">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <ToggleButton
-                    Padding="2"
-                    Template="{DynamicResource StarToggleButton}" IsChecked="{Binding IsFavorite}"/>
                                 <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
 
                             </StackPanel>
@@ -39,13 +35,17 @@
                                     <DataTemplate>
                                         <StackPanel>
                                             <Image Source="{Binding ImageUri}" Width="100" Height="100" Stretch="Uniform"/>
-                                            <TextBlock Text="{Binding Name}"/>
-                                        </StackPanel>
+                                            <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"/>
+                                            <Viewbox Width="35" Height="35" HorizontalAlignment="Center">
+                                                <ToggleButton Template="{DynamicResource StarToggleButton}" IsChecked="{Binding IsFavorite}"/>
+                                            </Viewbox>
+
+                                            </StackPanel>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                                 </ItemsControl>
                             <StackPanel Orientation="Horizontal">
-                                <Button Content="Who needs to Feed?" Command="{Binding DataContext.FeedCommand,ElementName=List}" CommandParameter="{Binding}"/>
+                                <Button Content="Which dogs need to be fed?" Command="{Binding DataContext.FeedCommand,ElementName=List}" CommandParameter="{Binding}"/>
                             </StackPanel>
                         </StackPanel>
                     </Border>
